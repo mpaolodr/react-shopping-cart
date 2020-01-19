@@ -10,7 +10,7 @@ const Navigation = () => {
       <NavLink to="/">Products</NavLink>
 
       <CartContext.Consumer>
-        {cart => {
+        {({ cart }) => {
           return (
             <NavLink to="/cart">
               Cart <span>{cart.length}</span>
