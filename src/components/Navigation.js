@@ -1,15 +1,25 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-const Navigation = props => {
-	return (
-		<div className="navigation">
-			<NavLink to="/">Products</NavLink>
-			<NavLink to="/cart">
-				Cart <span>{props.cart.length}</span>
-			</NavLink>
-		</div>
-	);
+//Context Object
+import { CartContext } from "../contexts/CartContext";
+
+const Navigation = () => {
+  return (
+    <div className="navigation">
+      <NavLink to="/">Products</NavLink>
+
+      <CartContext.Consumer>
+        {({ cart }) => {
+          return (
+            <NavLink to="/cart">
+              Cart <span>{cart.length}</span>
+            </NavLink>
+          );
+        }}
+      </CartContext.Consumer>
+    </div>
+  );
 };
 
 export default Navigation;
